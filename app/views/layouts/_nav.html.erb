@@ -1,0 +1,19 @@
+<p> nav bar </p>
+<%= link_to "Home", root_path %> &nbsp;
+
+<% if !user_signed_in? %>
+    <%= link_to "Login", new_user_session_path %> &nbsp;
+<% else %>
+    <%= current_user.email %> &nbsp;
+    <%= link_to "Sign out", destroy_user_session_path, 'data-turbo-method': :delete %> &nbsp;
+<% end %>
+
+<%= link_to "All hotels", hotels_path %> &nbsp;
+<%= link_to "About Hotels", about_path %> &nbsp;
+
+<% if current_user.try(:admin?) %>
+    <!-- only visable to admin user -->
+    <span> admin </span>
+    <% end %>
+    
+<br>
