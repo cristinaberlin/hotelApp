@@ -1,3 +1,52 @@
-<h1>Home#home</h1>
+<!-- app/views/home/home.html.erb -->
+<div class="container mt-4">
+  <div class="jumbotron bg-info text-white">
+    <h1>Welcome to the Home Page</h1>
+    <p>Discover the perfect blend of modern elegance and home-like warmth with our top-notch amenities and personalized services tailored to your every need</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <% if @randomsetup && @randomdelivery %>
+        <div class="card">
+          <div class="card-header">
+            Daily Programmer Joke
+          </div>
+        
+          <div class="card-body">
+            <h5 class="card-title">Setup: <%= @randomsetup %></h5>
+            <p class="card-text">Punchline: <%= @randomdelivery %></p>
+          </div>
+        </div>
+      <% else %>
+        <div class="card">
+          <div class="card-header">
+            Daily Programmer Joke
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= @randomjoke %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <h1>Home#home</h1>
 <h1>Welcome to the Home Page</h1>
 <p>Find me in app/views/home/home.html.erb</p>
+
+
+
+<% if @randomsetup && @randomdelivery %>
+  <p>Setup: <%= @randomsetup %></p>
+  <p>Punchline: <%= @randomdelivery %></p>
+<% else %>
+  <p>Programmer Joke: <%= @randomjoke %></p>
+<% end %> -->
+
+
+

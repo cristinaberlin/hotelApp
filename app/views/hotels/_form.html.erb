@@ -1,37 +1,37 @@
-<%= form_with(model: hotel) do |form| %>
+<!-- app/views/hotels/_form.html.erb -->
+<%= form_with(model: hotel, local: true, html: { class: "form-horizontal" }) do |form| %>
   <% if hotel.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4><%= pluralize(hotel.errors.count, "error") %> prohibited this hotel from being saved:</h4>
       <ul>
-        <% hotel.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% hotel.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name_room, style: "display: block" %>
-    <%= form.text_field :name_room %>
+  <div class="form-group mb-3">
+    <%= form.label :name_room, class: "control-label" %>
+    <%= form.text_field :name_room, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
+  <div class="form-group mb-3">
+    <%= form.label :price, class: "control-label" %>
+    <%= form.number_field :price, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :full_name, style: "display: block" %>
-    <%= form.text_field :full_name %>
+  <div class="form-group mb-3">
+    <%= form.label :full_name, class: "control-label" %>
+    <%= form.text_field :full_name, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <div class="form-group mb-3">
+    <%= form.label :email, class: "control-label" %>
+    <%= form.email_field :email, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

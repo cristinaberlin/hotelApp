@@ -1,5 +1,9 @@
 source "https://rubygems.org"
 
+#gems added
+gem 'httparty', '~> 0.20.0'
+gem "devise", "~> 4.9"
+
 ruby "3.2.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -52,6 +56,9 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 end
 
+gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
@@ -71,4 +78,3 @@ end
 
 gem "tailwindcss-rails", "~> 2.0"
 
-gem "devise", "~> 4.9"

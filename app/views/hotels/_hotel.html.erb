@@ -1,22 +1,21 @@
-<div id="<%= dom_id hotel %>">
-  <p>
-    <strong>Name room:</strong>
-    <%= hotel.name_room %>
-  </p>
+<!-- app/views/hotels/_hotel.html.erb -->
+<div id="<%= dom_id hotel %>" class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title"><%= hotel.name_room %></h5>
+    
+    <p class="card-text">
+      <strong>Price:</strong>
+      <%= number_to_currency(hotel.price) %>
+    </p>
 
-  <p>
-    <strong>Price:</strong>
-    <%= hotel.price %>
-  </p>
+    <p class="card-text">
+      <strong>Full Name:</strong>
+      <%= hotel.full_name %>
+    </p>
 
-  <p>
-    <strong>Full name:</strong>
-    <%= hotel.full_name %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= hotel.email %>
-  </p>
-
+    <p class="card-text">
+      <strong>Email:</strong>
+      <%= hotel.email %>
+    </p>
+  </div>
 </div>

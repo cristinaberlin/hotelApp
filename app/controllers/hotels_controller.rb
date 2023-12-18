@@ -1,12 +1,13 @@
 require 'hotel_decorator'
 
+
 class HotelsController < ApplicationController
 
-  before_action :set_hotel, only: %i[show] #only shows hotels before having to authenticate
-  before_action :user_signed_in?, only: [:edit, :create, :update] #once user is logged in they can do these things, not any ordinary joe can do these things
+  before_action :set_hotel, only: %i[show edit update] #only shows hotels before having to authenticate
+  before_action :user_signed_in?, only: [:edit, :create, :update]
+   #once user is logged in they can do these things, not any ordinary joe can do these things
   #before_action :authenticate_user!
-  before_action :admin?, only: [:destroy] #only admin can do this!
-
+  before_action :check_admin, only: [:destroy] #only admin can do this!
 
 
   # GET /hotels or /hotels.json
@@ -25,11 +26,22 @@ class HotelsController < ApplicationController
 
   # GET /hotels/1/edit
   def edit
+    @hotel = Hotel.find(params[:id])
   end
 
   # POST /hotels or /hotels.json
   def create
    # @hotel = Hotel.new(hotel_params)
+
+   private
+
+   def check_admin
+    puts 'check_admin method called'  # Debugging statement
+    unless admin?
+      redirect_to root_url, alert: "You are not authorized to perform this action."
+    end
+  end
+
 
    #implementing decorator design
     @hotel = Hotel.new()
@@ -49,13 +61,14 @@ class HotelsController < ApplicationController
      # Get the decorated special feature and save it to a description or another attribute
      #@hotel.description = @hotel.description + " " + decorated_hotel.special_feature
  
-
+     def admin?
+      current_user && current_user.admin?
+    end
+  
 
   def about
       # about page
   end
-
-
 
     respond_to do |format|
       if @hotel.save
@@ -83,6 +96,8 @@ class HotelsController < ApplicationController
 
   # DELETE /hotels/1 or /hotels/1.json
   def destroy
+    #stops and inspects for bugs
+    byebug
     @hotel.destroy!
 
     respond_to do |format|
