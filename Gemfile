@@ -74,6 +74,14 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'brakeman'
+  gem 'bundler-audit'
+  gem 'ruby_audit'
+  gem 'pg'
+  gem 'rubocop-rails'
+  gem 'rubocop'
+  
 end
 
 gem "tailwindcss-rails", "~> 2.0"
